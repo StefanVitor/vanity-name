@@ -64,7 +64,7 @@ This project is built with:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/StefanVitor/vanity-name
+   git clone https://github.com/StefanVitor/vanity-name-system
    ```
 2. npm install
 
@@ -107,6 +107,6 @@ Distributed under the MIT. See `LICENSE` for more information.
 
 Stefan Vitorovic - [@StefanVitorovic](https://twitter.com/StefanVitorovic) - vitorovicstefan@gmail.com
 
-Project Link: [https://github.com/StefanVitor/vanity-name](https://github.com/StefanVitor/vanity-name)
+Project Link: [https://github.com/StefanVitor/vanity-name-system](https://github.com/StefanVitor/vanity-name-system)
 
 
