@@ -163,7 +163,7 @@ contract('VanityNameController Test', function (accounts) {
 
         var balanceBeforeAccountMain = await web3.eth.getBalance(registrantAccount);
         await evm.advanceTime(registrerPeriod + gracePeriod + 1);
-        await vnControllerInstance.withdrawLockedAmount("newname2", {gasPrice: 0, from:registrantAccount});
+        await vnControllerInstance.unlockAndWithdrawAmount("newname2", {gasPrice: 0, from:registrantAccount});
         var balanceAfterAccountMain = await web3.eth.getBalance(registrantAccount);
         assert.equal(new BN(balanceBeforeAccountMain).add(new BN(lockingAmount.toString())), balanceAfterAccountMain);
     });
@@ -196,7 +196,7 @@ contract('VanityNameController Test', function (accounts) {
         assert.equal((await web3.eth.getBalance(vnControllerInstance.address)) - balanceBefore, valueForSend);
 
         var balanceBeforeAccountMain = await web3.eth.getBalance(registrantAccountOther);
-        await vnControllerInstance.withdrawLockedAmountUnlocked({gasPrice: 0, from:registrantAccountOther});
+        await vnControllerInstance.withdrawUnlockedAmount({gasPrice: 0, from:registrantAccountOther});
         var balanceAfterAccountMain = await web3.eth.getBalance(registrantAccountOther);
         assert.equal(new BN(balanceBeforeAccountMain).add(new BN(lockingAmount.toString())), balanceAfterAccountMain);
     });

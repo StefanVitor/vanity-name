@@ -9,8 +9,6 @@ import "./VanityNamePrices.sol";
 contract VanityNameController is Ownable {
     using StringUtils for *;
 
-    mapping(bytes32=>uint256) public commitments;
-
     VanityNamePrices prices;
     VanityNameRegistrar registrar;
 
@@ -21,12 +19,15 @@ contract VanityNameController is Ownable {
     // Sum of locked amount
     uint256 public lockedAmountSum;
 
+    // List of commitments how it should be prevent front-run process
+    mapping(bytes32=>uint256) public commitments;
+
     uint256 public minCommitmentAge;
     uint256 public maxCommitmentAge;
 
     struct LockingRecord {
-        uint256 amount;     // How many LP tokens the user has provided.
-        address owner;
+        uint256 amount;     // How many locking amount the user has provided.
+        address owner;      // User address that provides locking amount for some name
     }
     // For every tokenId how much amount is locked (if controller has changes about lock amount)
     mapping(uint256=>LockingRecord) public lockingAmounts;
@@ -37,6 +38,15 @@ contract VanityNameController is Ownable {
     event NameRenewed(string name, bytes32 indexed label, uint cost, uint expires);
     event NewPrices(address indexed prices);
 
+    /**
+     * @dev Initializer for VanityNameController
+     * @param _prices Address for prices contract
+     * @param _registrar Address for registrar contract
+     * @param _lockingAmount  Amount that should be locked for every registration
+     * @param _registerPeriod  Registration period
+     * @param _minCommitmentAge Min commitment period
+     * @param _maxCommitmentAge Max commitment period 
+     */
     constructor(VanityNamePrices _prices, VanityNameRegistrar _registrar, 
         uint256 _lockingAmount, uint256 _registerPeriod,
         uint256 _minCommitmentAge, uint256 _maxCommitmentAge
@@ -136,7 +146,7 @@ contract VanityNameController is Ownable {
      * @dev Withdraw locked amount from expired name
      * @param name Name for which should be withdraw lockedAmount + unlocked amounts from others tokens which are unlocked
      */
-    function withdrawLockedAmount(string memory name) public {
+    function unlockAndWithdrawAmount(string memory name) public {
         bytes32 label = keccak256(bytes(name));
         uint256 tokenId = uint256(label);
 
@@ -145,13 +155,13 @@ contract VanityNameController is Ownable {
             _unlockedAmount(tokenId);
         }
 
-        withdrawLockedAmountUnlocked();    
+        withdrawUnlockedAmount();    
     }
 
     /**
      * @dev Withdraw locked amount that other users unlocked
      */
-    function withdrawLockedAmountUnlocked() public {
+    function withdrawUnlockedAmount() public {
         uint256 amountForUnlock = unlockedAmounts[msg.sender];
         unlockedAmounts[msg.sender] = 0;
         payable(msg.sender).transfer(amountForUnlock);      
@@ -224,11 +234,16 @@ contract VanityNameController is Ownable {
     }
 
     function _unlockedAmount(uint256 tokenId) private {
+        // Get what amount should be unlocked and for what user
         uint256 amountForUnlock = lockingAmounts[tokenId].amount;
         address previousLockingAmountOwner = lockingAmounts[tokenId].owner;
-        unlockedAmounts[previousLockingAmountOwner] = unlockedAmounts[previousLockingAmountOwner] + amountForUnlock;
-        lockingAmounts[tokenId].amount = 0;
-        lockingAmounts[tokenId].owner = address(0x0);
-        lockedAmountSum = lockedAmountSum - amountForUnlock;
+
+        if (amountForUnlock > 0 && previousLockingAmountOwner != address(0x0)) {
+            // Add unlocked amount to user which deposit amount 
+            unlockedAmounts[previousLockingAmountOwner] = unlockedAmounts[previousLockingAmountOwner] + amountForUnlock;
+            lockingAmounts[tokenId].amount = 0;
+            lockingAmounts[tokenId].owner = address(0x0);
+            lockedAmountSum = lockedAmountSum - amountForUnlock;
+        }
     }
 }
