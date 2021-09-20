@@ -75,10 +75,15 @@ This project is built with:
 }
 ```
 
-4. Deploy contracts on local truffle or Rinkeby / Ropsten network - truffle --network networkName migrate --reset 
+4. Deploy contracts on local truffle or Rinkeby / Ropsten network
+```
+truffle --network networkName migrate --reset
+```
 
-5. Test contracts on local truffle or Rinkeby / Ropsten network - truffle --network networkName test
-
+5. Test contracts on local truffle or Rinkeby / Ropsten network
+```
+truffle --network networkName test
+```
 
 <!-- CONTRIBUTING -->
 ## Contributing
