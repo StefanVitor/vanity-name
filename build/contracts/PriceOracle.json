@@ -1,0 +1,327 @@
+{
+  "contractName": "PriceOracle",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "price",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"price\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"price(string)\":{\"details\":\"Returns the price to register or renew a name.\",\"params\":{\"name\":\"The name being registered or renewed\"},\"returns\":{\"_0\":\"The price of this renewal or registration, in wei.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/PriceOracle.sol\":\"PriceOracle\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/PriceOracle.sol\":{\"keccak256\":\"0x7baab9c17a75698676e907b45be097434338b0155169784e326a5ffa0b244f99\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://2d03cbaf6129489515751ce86a01c7f584bba41abb250b4bf04c3e7a98b1df35\",\"dweb:/ipfs/QmauR5RUeD37S73prGbwYEfGS1V9tmyo8yo9NAcXFVRJwc\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.7;\r\n\r\ninterface PriceOracle {\r\n    /**\r\n     * @dev Returns the price to register or renew a name.\r\n     * @param name The name being registered or renewed\r\n     * @return The price of this renewal or registration, in wei.\r\n     */\r\n    function price(string calldata name) external view returns(uint);\r\n}",
+  "sourcePath": "D:\\Posao-Stefan\\Stefan-razno\\Blockchain\\AdvancedBlockchain\\VanityNames\\contracts\\interfaces\\PriceOracle.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/PriceOracle.sol",
+    "exportedSymbols": {
+      "PriceOracle": [
+        2775
+      ]
+    },
+    "id": 2776,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2766,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "40:23:14"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2775,
+        "linearizedBaseContracts": [
+          2775
+        ],
+        "name": "PriceOracle",
+        "nameLocation": "77:11:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 2767,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:196:14",
+              "text": " @dev Returns the price to register or renew a name.\n @param name The name being registered or renewed\n @return The price of this renewal or registration, in wei."
+            },
+            "functionSelector": "fe2c6198",
+            "id": 2774,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "price",
+            "nameLocation": "307:5:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2770,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2769,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "329:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2774,
+                  "src": "313:20:14",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2768,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "313:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "312:22:14"
+            },
+            "returnParameters": {
+              "id": 2773,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2772,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2774,
+                  "src": "357:4:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2771,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "357:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "356:6:14"
+            },
+            "scope": 2775,
+            "src": "298:65:14",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2776,
+        "src": "67:299:14",
+        "usedErrors": []
+      }
+    ],
+    "src": "40:326:14"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/PriceOracle.sol",
+    "exportedSymbols": {
+      "PriceOracle": [
+        2775
+      ]
+    },
+    "id": 2776,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2766,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "40:23:14"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2775,
+        "linearizedBaseContracts": [
+          2775
+        ],
+        "name": "PriceOracle",
+        "nameLocation": "77:11:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 2767,
+              "nodeType": "StructuredDocumentation",
+              "src": "96:196:14",
+              "text": " @dev Returns the price to register or renew a name.\n @param name The name being registered or renewed\n @return The price of this renewal or registration, in wei."
+            },
+            "functionSelector": "fe2c6198",
+            "id": 2774,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "price",
+            "nameLocation": "307:5:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2770,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2769,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "329:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2774,
+                  "src": "313:20:14",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2768,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "313:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "312:22:14"
+            },
+            "returnParameters": {
+              "id": 2773,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2772,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2774,
+                  "src": "357:4:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2771,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "357:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "356:6:14"
+            },
+            "scope": 2775,
+            "src": "298:65:14",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2776,
+        "src": "67:299:14",
+        "usedErrors": []
+      }
+    ],
+    "src": "40:326:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.7+commit.e28d00a7.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-20T13:04:07.673Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "price(string)": {
+        "details": "Returns the price to register or renew a name.",
+        "params": {
+          "name": "The name being registered or renewed"
+        },
+        "returns": {
+          "_0": "The price of this renewal or registration, in wei."
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
